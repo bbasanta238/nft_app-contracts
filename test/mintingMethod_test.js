@@ -8,7 +8,7 @@ describe("NFT main minting and URI test", () => {
 		deployedContract = await contract.deploy();
 	});
 	it("should have mint token", async () => {
-        await deployedContract.connect(add1).safeMint(add1.address,"NFT_1")
+        await deployedContract.connect(add1).safeMint("NFT_1")
 		expect (await deployedContract.connect(add1).ownerOf(1)).to.equal(add1.address)
 		
 		console.log(
@@ -18,7 +18,7 @@ describe("NFT main minting and URI test", () => {
 	});
 
     it("should have give the uri of metadata",async()=>{
-        await deployedContract.connect(add2).safeMint(add2.address,"NFT_1")
+        await deployedContract.connect(add2).safeMint("NFT_1")
         expect(await deployedContract.connect(add1).tokenURI(1)).to.equal("NFT_1")
     })
 });

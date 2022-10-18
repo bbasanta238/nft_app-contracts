@@ -13,10 +13,10 @@ contract NFTMain is ERC721, ERC721URIStorage, Ownable {
 
     constructor() ERC721("Erc721InfiniteToken", "ITOK") {}
 
-    function safeMint(address to, string memory uri) public {
+    function safeMint(string memory uri) public {
         _tokenIdCounter.increment();
         uint256 tokenId = _tokenIdCounter.current();
-        _safeMint(to, tokenId);
+        _safeMint(msg.sender, tokenId);
         _setTokenURI(tokenId, uri);
     }
 
