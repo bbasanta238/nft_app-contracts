@@ -8,7 +8,13 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "./lib/NFTDataStruct.sol";
 
-contract NFTMain is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, NFTDataStruct {
+contract NFTMain is
+    ERC721,
+    ERC721Enumerable,
+    ERC721URIStorage,
+    Ownable,
+    NFTDataStruct
+{
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
@@ -42,10 +48,11 @@ contract NFTMain is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, NFTData
 
     // The following functions are overrides required by Solidity.
 
-    function _beforeTokenTransfer(address from, address to, uint256 tokenId)
-        internal
-        override(ERC721, ERC721Enumerable)
-    {
+    function _beforeTokenTransfer(
+        address from,
+        address to,
+        uint256 tokenId
+    ) internal override(ERC721, ERC721Enumerable) {
         super._beforeTokenTransfer(from, to, tokenId);
     }
 
@@ -59,11 +66,11 @@ contract NFTMain is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, NFTData
     }
 
     // method to get all tokens
-    function getAllTokens() public view returns(tokenInfo[] memory){
+    function getAllTokens() public view returns (tokenInfo[] memory) {
         // array initialization for return type memory
         tokenInfo[] memory returnDataArray = new tokenInfo[](totalSupply());
-        for(uint i=0; i<totalSupply();i++){
-            tokenInfo memory dataStruct = tokenInfo(i+1,tokenURI(i+1));
+        for (uint256 i = 0; i < totalSupply(); i++) {
+            tokenInfo memory dataStruct = tokenInfo(i + 1, tokenURI(i + 1));
             returnDataArray[i] = dataStruct;
         }
         return returnDataArray;
