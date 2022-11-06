@@ -5,6 +5,7 @@ contract NFTDataStruct {
     struct tokenInfo {
         uint256 tokenID;
         string tokenURI;
+        address currentOwner;
     }
 
     // struct array for returning data

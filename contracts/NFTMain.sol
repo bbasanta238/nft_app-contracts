@@ -70,7 +70,7 @@ contract NFTMain is
         // array initialization for return type memory
         tokenInfo[] memory returnDataArray = new tokenInfo[](totalSupply());
         for (uint256 i = 0; i < totalSupply(); i++) {
-            tokenInfo memory dataStruct = tokenInfo(i + 1, tokenURI(i + 1));
+            tokenInfo memory dataStruct = tokenInfo(i + 1, tokenURI(i + 1),ownerOf(i+1));
             returnDataArray[i] = dataStruct;
         }
         return returnDataArray;

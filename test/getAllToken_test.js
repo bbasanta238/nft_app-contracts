@@ -10,6 +10,7 @@ describe("NFT main get all token method test", () => {
     await deployedContract.connect(add1).safeMint("NFT_2");
     await deployedContract.connect(add1).safeMint("NFT_3");
     await deployedContract.connect(add1).safeMint("NFT_4");
+    await deployedContract.connect(add2).safeMint("NFT_5");
   });
   it("should retun an array of all nft with struct token ID and token URI", async () => {
     console.log("*************** Array of Data ****************");
