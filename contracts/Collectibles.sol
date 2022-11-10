@@ -6,20 +6,20 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
-import "./lib/NFTDataStruct.sol";
+import "./lib/CollectiblesData.sol";
 
-contract NFTMain is
-    ERC721,
+contract Collectibles is
     ERC721Enumerable,
     ERC721URIStorage,
     Ownable,
-    NFTDataStruct
+    CollectiblesData
+    
 {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC721("Erc721InfiniteToken", "ITOK") {}
+    constructor(string memory _name ,string memory _symbol) ERC721(_name, _symbol) {}
 
     function safeMint(string memory uri) public {
         _tokenIdCounter.increment();
@@ -67,12 +67,17 @@ contract NFTMain is
 
     // method to get all tokens
     function getAllTokens() public view returns (tokenInfo[] memory) {
-        // array initialization for return type memory
         tokenInfo[] memory returnDataArray = new tokenInfo[](totalSupply());
         for (uint256 i = 0; i < totalSupply(); i++) {
-            tokenInfo memory dataStruct = tokenInfo(i + 1, tokenURI(i + 1),ownerOf(i+1));
+            tokenInfo memory dataStruct = tokenInfo(
+                i + 1,
+                tokenURI(i + 1),
+                ownerOf(i + 1)
+            );
             returnDataArray[i] = dataStruct;
         }
         return returnDataArray;
     }
+
+   
 }

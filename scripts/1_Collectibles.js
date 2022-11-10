@@ -7,18 +7,13 @@
 const hre = require("hardhat");
 
 async function main() {
-  
-
-  const contract = await hre.ethers.getContractFactory("NFTMain");
-  const contractInstance = await contract.deploy();
+  const contract = await hre.ethers.getContractFactory("Collectibles");
+  const contractInstance = await contract.deploy("NFTTOKEN", "nTOk");
 
   await contractInstance.deployed();
 
-  console.log(
-    `deployed to address : ${contractInstance.address}`
-  );
+  console.log(`deployed to address (NFT main) :  ${contractInstance.address}`);
 }
-
 
 main().catch((error) => {
   console.error(error);

@@ -4,8 +4,8 @@ const { ethers } = require("hardhat");
 describe("NFT main minting and URI test", () => {
   beforeEach(async () => {
     [add1, add2, add3] = await ethers.getSigners();
-    contract = await ethers.getContractFactory("NFTMain");
-    deployedContract = await contract.deploy();
+    contract = await ethers.getContractFactory("Collectibles");
+    deployedContract = await contract.deploy("NFTOKen", "NTOk");
   });
   it("should have mint token", async () => {
     await deployedContract.connect(add1).safeMint("NFT_1");
