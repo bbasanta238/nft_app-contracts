@@ -13,13 +13,14 @@ contract Collectibles is
     ERC721URIStorage,
     Ownable,
     CollectiblesData
-    
 {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor(string memory _name ,string memory _symbol) ERC721(_name, _symbol) {}
+    constructor(string memory _name, string memory _symbol)
+        ERC721(_name, _symbol)
+    {}
 
     function safeMint(string memory uri) public {
         _tokenIdCounter.increment();
@@ -78,6 +79,4 @@ contract Collectibles is
         }
         return returnDataArray;
     }
-
-   
 }
