@@ -19,25 +19,24 @@ describe("NFT main get all token method test", () => {
   });
   it("should transfer token to the transferred account and balance to the seller account", async () => {
     await deployedCollectivleContract
-      .connect(add1)
+      .connect(add2)
       .setApprovalForAll(deployedExchangeContract.address, true);
 
-    // await deployedCollectivleContract.connect(add1).getApproved(1);
-    owner1 = await deployedCollectivleContract.ownerOf(1);
-    await deployedExchangeContract
-      .connect(add2)
-      .buyToken(
-        deployedCollectivleContract.address,
-        3,
-        add2.address,
-        1000000000000000,
-        {
-          value: 1000000000000000,
-        }
-      );
-    owner2 = await deployedCollectivleContract.ownerOf(1);
-    console.log("owner of 1 before transfer:", owner1);
-    console.log("owner of 1 after transfer:", owner2);
+    expect(
+      await deployedExchangeContract
+        .connect(add2)
+        .buyToken(
+          deployedCollectivleContract.address,
+          4,
+          add1.address,
+          1000000000000000,
+          {
+            value: 1000000000000000,
+          }
+        )
+    )
+      .to.emit(deployedExchangeContract, "Transfer")
+      .withArgs(add2.address, add1.address, 4);
   });
 
   it("should give owner of the token", async () => {
