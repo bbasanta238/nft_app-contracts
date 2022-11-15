@@ -4,10 +4,7 @@ pragma solidity ^0.8.9;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-
-contract Collectibles is
-    ERC721URIStorage
-{
+contract Collectibles is ERC721URIStorage {
     struct tokenInfo {
         uint256 tokenID;
         string tokenURI;
@@ -29,10 +26,12 @@ contract Collectibles is
         _safeMint(msg.sender, tokenId);
         _setTokenURI(tokenId, uri);
     }
-   
+
     // method to get all tokens
     function getAllTokens() public view returns (tokenInfo[] memory) {
-        tokenInfo[] memory returnDataArray = new tokenInfo[](_tokenIdCounter.current());
+        tokenInfo[] memory returnDataArray = new tokenInfo[](
+            _tokenIdCounter.current()
+        );
         for (uint256 i = 0; i < _tokenIdCounter.current(); i++) {
             tokenInfo memory dataStruct = tokenInfo(
                 i + 1,
