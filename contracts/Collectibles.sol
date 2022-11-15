@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract Collectibles is ERC721URIStorage {
+    constructor() ERC721("NFToken", "NTOk") {}
     struct tokenInfo {
         uint256 tokenID;
         string tokenURI;
@@ -17,8 +18,6 @@ contract Collectibles is ERC721URIStorage {
     using Counters for Counters.Counter;
 
     Counters.Counter internal _tokenIdCounter;
-
-    constructor() ERC721("NFToken", "NTOk") {}
 
     function safeMint(string memory uri) public {
         _tokenIdCounter.increment();
