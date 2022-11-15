@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract Collectibles is ERC721URIStorage {
     constructor() ERC721("NFToken", "NTOk") {}
+
     struct tokenInfo {
         uint256 tokenID;
         string tokenURI;
