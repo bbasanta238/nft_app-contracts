@@ -4,6 +4,10 @@ coverage
 coverage.json
 typechain
 typechain-types
+.husky
+.vscode
+.solhint.json
+package-lock.json
 
 #Hardhat files
 cache

@@ -7,6 +7,7 @@ describe("NFT main minting and URI test", () => {
     contract = await ethers.getContractFactory("Collectibles");
     deployedContract = await contract.deploy();
   });
+
   it("should have mint token", async () => {
     await deployedContract.connect(add1).safeMint("NFT_1");
     expect(await deployedContract.connect(add1).ownerOf(1)).to.equal(
