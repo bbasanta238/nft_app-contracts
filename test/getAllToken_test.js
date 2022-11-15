@@ -5,7 +5,7 @@ describe("NFT main get all token method test", () => {
   beforeEach(async () => {
     [add1, add2, add3] = await ethers.getSigners();
     contract = await ethers.getContractFactory("Collectibles");
-    deployedContract = await contract.deploy("NFToken", "NTOK");
+    deployedContract = await contract.deploy();
     await deployedContract.connect(add1).safeMint("NFT_1");
     await deployedContract.connect(add1).safeMint("NFT_2");
     await deployedContract.connect(add1).safeMint("NFT_3");

@@ -8,7 +8,7 @@ const hre = require("hardhat");
 
 async function main() {
   const contract = await hre.ethers.getContractFactory("Collectibles");
-  const contractInstance = await contract.deploy("NFTTOKEN", "nTOk");
+  const contractInstance = await contract.deploy();
 
   await contractInstance.deployed();
 

@@ -18,8 +18,8 @@ contract Collectibles is
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor(string memory _name, string memory _symbol)
-        ERC721(_name, _symbol)
+    constructor()
+        ERC721("NFToken", "NTOk")
     {}
 
     function safeMint(string memory uri) public {
