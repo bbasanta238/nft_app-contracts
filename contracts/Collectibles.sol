@@ -18,7 +18,7 @@ contract Collectibles is ERC721URIStorage {
 
     using Counters for Counters.Counter;
 
-    Counters.Counter internal _tokenIdCounter;
+    Counters.Counter public _tokenIdCounter;
 
     function safeMint(string memory uri) public {
         _tokenIdCounter.increment();
